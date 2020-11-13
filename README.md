@@ -4,7 +4,7 @@
 
 1. Django Custom User-authentication
 
-2. django Profile_pic with Images Croperr [MODAL TO CROP THE IMAGE TAMPLATE NAME 'profile.html']
+2. django Profile_pic with Images Cropper [MODAL TO CROP THE IMAGE TAMPLATE NAME 'profile.html']
 
 3. django-intl-tel-input
 
@@ -22,6 +22,8 @@
 
 4. **pip install -r requirements.txt**
 
-5. http://127.0.0.1:8000/
+5. python manage.py runserver
 
-6. Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
+6. http://127.0.0.1:8000/
+
+7. Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
