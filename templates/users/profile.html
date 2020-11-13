@@ -1,0 +1,145 @@
+{% extends 'users/profile_base.html' %}
+{% load static %}
+{% load crispy_forms_tags%}
+
+
+{% block content %}
+
+<div class="container mt-4">
+
+ <div class="row">
+<!--.........................................--> 
+  <div class="card col mr-3" 
+  
+    style="-webkit-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+    box-shadow: 0px 2px 18px 14px rgba(222,222,222,1); ">
+
+    <img src="{{ user.profile.file.url }}" class="card-img-top thumbnail mt-3">
+
+    <div class="card-body">
+      <p class="card-title text-secondary h3 font-weight-bold">{{user.username}}</p>
+      <a class="card-text text-secondary font-weight-bold">{{user.email}}</a>
+      <hr>
+      <p class="card-text text-secondary mt-1">I am a Professional Web developer</p>
+      <hr>
+      <form method="post" enctype="multipart/form-data" id="formUpload">
+      {% csrf_token %}
+      {{ form|crispy }}
+      </form>   
+      <a class="text-primary" href="{% url 'password_reset' %}" >Change Password</a>
+    </div>
+    <div class="card-body">
+      <!-- FORM TO UPLOAD THE IMAGES -->
+    </div>
+  </div>
+<!--.........................................-->
+    <div class="card col-sm-8 font-weight-bold text-dark">
+    <div class="card-header">
+      Update Profile Information! 
+    </div>
+    <div class="card-body card-profile">
+
+    <a href="{% url 'users-profile-info' %}" class="btn btn-primary btn-sm profile font-weight-bold">Profile Setting</a>
+    <a href="{% url 'users-address-info' %}" class="btn btn-primary btn-sm font-weight-bold">Address Book</a><hr>
+<!-- 
+  
+      <p class="card-title text-secondary font-weight-bold">Full Name: {{ user.address.full_name }}</p><hr>
+      <p class="card-text text-secondary font-weight-bold">Phone Number: {{ user.address.phone_number }}</p><hr>
+      <p class="card-text text-secondary mt-1">House Number: {{ user.address.house_number }}</p><hr>
+      <p class="card-text text-secondary mt-1">Division: {{ user.address.division }}</p><hr> -->
+
+
+      {% block profile_info %}
+
+      {% endblock %}
+
+      {% block address_info %}
+
+      {% endblock %}   
+
+    </div>
+    </div>
+
+ </div>
+</div>
+
+<!-- MODAL TO CROP THE IMAGE -->
+<div class="modal fade" id="modalCrop">
+<div class="modal-dialog modal-lg" style="width: 100%;">
+  <div class="modal-content">
+    <div class="modal-body">
+      <img src="" id="image" class="" style="max-width:100%; ">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default ml-3" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary js-crop-and-upload ml-3">Upload</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+ $(function () {
+
+  /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
+  $("#id_file").change(function () {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#image").attr("src", e.target.result);
+        $("#modalCrop").modal("show");
+      }
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  /* SCRIPTS TO HANDLE THE CROPPER BOX */
+  var $image = $("#image");
+  var cropBoxData;
+  var canvasData;
+  $("#modalCrop").on("shown.bs.modal", function () {
+    $image.cropper({
+      viewMode: 1,
+      aspectRatio: 1/1,
+      minCropBoxWidth: 300,
+      minCropBoxHeight: 300,
+      ready: function () {
+        $image.cropper("setCanvasData", canvasData);
+        $image.cropper("setCropBoxData", cropBoxData);
+      }
+    });
+
+  }).on("hidden.bs.modal", function () {
+    cropBoxData = $image.cropper("getCropBoxData");
+    canvasData = $image.cropper("getCanvasData");
+    $image.cropper("destroy");
+  });
+
+  $(".js-zoom-in").click(function () {
+    $image.cropper("zoom", 0.1);
+  });
+
+  $(".js-zoom-out").click(function () {
+    $image.cropper("zoom", -0.1);
+  });
+
+
+  /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
+  $(".js-crop-and-upload").click(function () {
+    var cropData = $image.cropper("getData");
+    $("#id_x").val(cropData["x"]);
+    $("#id_y").val(cropData["y"]);
+    $("#id_height").val(cropData["height"]);
+    $("#id_width").val(cropData["width"]);
+    $("#formUpload").submit();
+  });
+
+ });
+ 
+ console.log('mohammad')
+</script>
+
+{% endblock %}
+

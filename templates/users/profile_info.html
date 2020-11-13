@@ -1,0 +1,30 @@
+{% extends 'users/profile.html' %}
+{% load static %}
+{% load crispy_forms_tags%}
+
+
+{% block profile_info %}
+
+ <style type="text/css">
+ 	.setting {
+      display: none;
+ 	}
+
+ 	.card-profile{
+    display: all;
+    -webkit-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+     -moz-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+     box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+  }
+
+ </style>
+
+  <form method="post" enctype="multipart/form-data" id="formUpload" >
+      {% csrf_token %}
+      {{ user_update_form|crispy }}
+      <button class="btn btn-primary btn-sm font-weight-bold mt-3" type="submitt">Update</button>
+      <a href="{% url 'users-profile' %}"  class="btn btn-primary btn-sm font-weight-bold mt-3" type="button">Back</a>
+
+  </form>
+
+{% endblock %}

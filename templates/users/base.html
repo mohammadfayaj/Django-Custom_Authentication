@@ -1,0 +1,167 @@
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href=" {% static 'css/bootstrap/bootstrap.min.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/owl.carousel.min.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/flaticon.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/slicknav.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/animate.min.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/magnific-popup.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/fontawesome-all.min.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/themify-icons.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/slick.css' %} ">
+        <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+
+
+        
+        <link rel="stylesheet" href="{% static 'css/cropper/cropper.min.css' %}">
+
+        <script src="{% static './js/bootstrap/jquery.min.js' %}"> </script>
+
+    </head>
+    <body>
+
+<header>
+<!-- Header Start -->
+<div class="header-area">
+<div class="main-header ">
+
+
+
+  <div class="header-bottom  header-sticky">
+  <div class="container-fluid">
+  <div class="row align-items-center">
+    <!-- Logo -->
+    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
+        <div class="logo">
+          <a class="h1 font-weight-bold text-danger"  href=" {% static 'index.html' %} "><!-- <img src=" {% static 'img/logo/logo.png' %} " alt=""> -->Estore*</a>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
+      <!-- Main-menu -->
+      <div class="main-menu f-right d-none d-lg-block">
+        <nav>                                                
+         <ul id="navigation">                                                                                                                                     
+          <li><a href=" {% url 'blog:blog-home' %} ">Home</a></li>
+          <li><a href=" {% static 'Catagori.html' %} ">Catagori</a></li>
+
+          <li class="hot"><a href="#">Latest</a>
+              <ul class="submenu">
+                  <li><a href=" {% static 'product_list.html' %} "> Product list</a></li>
+                  <li><a href=" {% static 'single-product.html' %} "> Product Details</a></li>
+              </ul>
+          </li>
+
+          <li>
+              <a href=" {% static 'blog.html' %} ">Blog</a>
+              <ul class="submenu">
+                  <li><a href=" {% static 'blog.html' %} ">Blog</a></li>
+                  <li><a href=" {% static 'single-blog.html' %} ">Blog Details</a></li>
+              </ul>
+          </li>
+
+          <li><a href="#">Pages</a>
+              <ul class="submenu">
+                  <li><a href=" {% static 'login.html' %} ">Login</a></li>
+                  <li><a href=" {% static 'cart.html' %} ">Card</a></li>
+                  <li><a href=" {% static 'elements.html' %} ">Element</a></li>
+                  <li><a href=" {% static 'about.html' %} ">About</a></li>
+                  <li><a href=" {% static 'confirmation.html' %} ">Confirmation</a></li>
+                  <li><a href=" {% static 'cart.html' %} ">Shopping Cart</a></li>
+                  <li><a href=" {% static 'checkout.html' %} ">Product Checkout</a></li>
+              </ul>
+          </li>
+          <li><a href=" {% static 'contact.html' %} ">Contact</a></li>
+      </ul>
+      </nav>
+      </div>
+      </div>
+
+
+
+  <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
+      <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
+          <li class="d-none d-xl-block">
+              <div class="form-box f-right ">
+                  <input type="text" name="Search" placeholder="Search products">
+                  <div class="search-icon">
+                      <i class="fas fa-search special-tag"></i>
+                  </div>
+              </div>
+           </li>
+          <li class=" d-none d-xl-block">
+              <div class="favorit-items">
+                  <i class="far fa-heart"></i>
+              </div>
+          </li>
+          <li>
+              <div class="shopping-card">
+                  <a href=" {% static 'cart.html' %} "><i class="fas fa-shopping-cart"></i></a>
+              </div>
+          </li>
+         <li class="d-none d-lg-block"> <a href="{% url 'users-login' %}" class="btn header-btn">Sign in</a></li>
+      </ul>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="col-12">
+      <div class="mobile_menu d-block d-lg-none"></div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</header>
+<!-- Header End -->
+
+      {% block content %}
+
+      {% endblock %}
+
+    <script src="{% static './js/cropper/cropper.min.js' %}"></script>
+    
+    <script src="{% static  './js/bootstrap/bootstrap.min.js' %}"></script>
+
+      <!-- All JS Custom Plugins Link Here here -->
+       <script src=" {% static './js/vendor/modernizr-3.5.0.min.js' %} "></script>
+ 
+    <!-- Jquery Mobile Menu -->
+       <script src=" {% static './js/jquery.slicknav.min.js' %} "></script>
+
+  <!-- Jquery Slick , Owl-Carousel Plugins -->
+       <script src=" {% static './js/owl.carousel.min.js' %} "></script>
+       <script src=" {% static './js/slick.min.js' %} "></script>
+
+  <!-- One Page, Animated-HeadLin -->
+       <script src=" {% static './js/wow.min.js' %} "></script>
+       <script src=" {% static './js/animated.headline.js' %} "></script>
+       <script src=" {% static './js/jquery.magnific-popup.js' %} "></script>
+
+  <!-- Scrollup, nice-select, sticky -->
+       <script src=" {% static './js/jquery.scrollUp.min.js' %} "></script>
+       <script src=" {% static './js/jquery.nice-select.min.js' %} "></script>
+       <script src=" {% static './js/jquery.sticky.js' %} "></script>
+       
+       <!-- contact js -->
+       <script src=" {% static './js/contact.js' %} "></script>
+       <script src=" {% static './js/jquery.form.js' %} "></script>
+       <script src=" {% static './js/jquery.validate.min.js' %} "></script>
+       <script src=" {% static './js/mail-script.js' %} "></script>
+       <script src=" {% static './js/jquery.ajaxchimp.min.js' %} "></script>
+       
+  <!-- Jquery Plugins, main Jquery -->  
+       <script src=" {% static './js/plugins.js' %} "></script>
+       <script src=" {% static './js/main.js' %} "></script>
+
+
+    </body>
+</html>

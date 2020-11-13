@@ -1,0 +1,140 @@
+{% extends 'users/profile.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block address_info %}
+<style type="text/css">
+    .setting {
+      display: none;
+  }
+
+  .card-profile{
+    display: all;
+    -webkit-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+     -moz-box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+     box-shadow: 0px 2px 18px 14px rgba(222,222,222,1);
+  }
+
+input{
+    background-color:#d9dada !important;
+    /*width:90% !important;*/
+    /*padding:12px;*/
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+    font-family: 'VAG Rundschrift D';
+    /*border:none;*/
+    border-radius:5px;
+    font-size:1.1em;
+    color:#747272;
+    /*margin-top: 0.5rem;*/
+    font-size:18px !important;
+}
+
+select {
+    background-color:#d9dada !important;
+    /*width:90% !important;*/
+    /*padding:12px;*/
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+    font-family: 'VAG Rundschrift D';
+    /*border:none;*/
+    border-radius:5px;
+    font-size:1.1em;
+    color:#747272;
+    /*margin-top: 0.5rem;*/
+    font-size:18px !important;
+}
+
+#tel_1{
+    background-color:#d9dada !important;
+    width:90% !important;
+    /*padding:12px;*/
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+    font-family: 'VAG Rundschrift D';
+    /*border:none;*/
+    border-radius:5px;
+    font-size:1.1em;
+    color:#747272;
+    margin-top: 0.5rem;
+    font-size:18px !important;
+    }
+
+#tel_0{
+    background-color:#d9dada !important;
+    width:90% !important;
+    /*padding:12px;*/
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;  
+    font-family: 'VAG Rundschrift D';
+    /*border:none;*/
+    border-radius:5px;
+    font-size:1.1em;
+    color:#747272;
+    /*margin-top: 0.5rem;*/
+    font-size:18px !important;
+    }
+</style>
+<form enctype="multipart/form-data" id="formUpload" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ address_info_form.first_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ address_info_form.last_name|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ address_info_form.phone_number|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ address_info_form.house_number|as_crispy_field }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            {{ address_info_form.division|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ address_info_form.city|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ address_info_form.zone|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ address_info_form.effective_delivery|as_crispy_field }}
+        </div>
+    </div>
+    <button class="btn btn-primary btn-sm font-weight-bold mt-3" type="submitt">
+        Update
+    </button>
+    <a class="btn btn-primary btn-sm font-weight-bold mt-3" href="{% url 'users-profile' %}" type="button">
+        Back
+    </a>
+</form>
+<script>
+    var phone_number = window.intlTelInput(document.querySelector("#mobile_number"), {
+  separateDialCode: true,
+  preferredCountries:["bd"],
+  hiddenInput: "full",
+  
+});
+
+$("#formUpload").submit(function() {
+  var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
+$("input[name='#mobile_number[full]'").val(full_number);
+  alert(full_number)
+  document.write(5 + 6);
+  console.log('hello')
+  document.write(full_number);
+  full_number.save()
+
+});
+</script>
+{% endblock %}
