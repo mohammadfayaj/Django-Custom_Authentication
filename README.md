@@ -2,7 +2,7 @@
 
 **What have this project ? >**
 
-1. Django Custom User-authentication
+1. Django Custom User-authentication With Django signal
 
 2. django Profile_pic with Images Cropper [MODAL TO CROP THE IMAGE TAMPLATE NAME 'profile.html']
 
