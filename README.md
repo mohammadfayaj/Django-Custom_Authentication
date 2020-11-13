@@ -2,10 +2,26 @@
 
 **What is have this project ? >**
 
-1.Django Custom User-authentication
+1. Django Custom User-authentication
 
-2.django Profile_pic Croper [with Jquery Croper]
+2. django Profile_pic with Images Croperr [MODAL TO CROP THE IMAGE TAMPLATE NAME 'profile.html']
 
-3.django PhoneNumberField
+3. django-intl-tel-input
 
-4.Custom User Address
+4. django-phonenumber-field
+
+5. Custom Users address
+
+# Install
+
+1. Just clone:- https://github.com/mohammadfayaj/Django-authentication.git
+
+2. Create virtualenv , activate virtualenv [ (your virtulenv dir name)/scripts/activate ]
+
+3. cd /project
+
+4. **pip install -r requirements.txt**
+
+5. http://127.0.0.1:8000/
+
+6. Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
