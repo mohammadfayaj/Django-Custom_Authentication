@@ -1,6 +1,6 @@
 # Welcome to Django-authentication
 
-**What is have this project ? >**
+**What have this project ? >**
 
 1. Django Custom User-authentication
 
