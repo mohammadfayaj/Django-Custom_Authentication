@@ -18,7 +18,7 @@
 
 2. Create virtualenv , activate virtualenv [ (your virtulenv dir name)/scripts/activate ]
 
-3. cd /project
+3. cd /projects
 
 4. **pip install -r requirements.txt**
 
