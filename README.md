@@ -13,7 +13,7 @@
 5. Custom Users address
 
 ![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/mohammadfayaj-patch-1/Screenshot%20(13).png)
-![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/main/Screenshot%20(15).png)
+![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/mohammadfayaj-patch-1/Screenshot%20(15).png)
 
 # Install
 
