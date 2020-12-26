@@ -12,6 +12,9 @@
 
 5. Custom Users address
 
+![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/main/Screenshot%20(13).png)
+![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/main/Screenshot%20(15).png)
+
 # Install
 
 1. Just clone:- https://github.com/mohammadfayaj/Django-authentication.git
