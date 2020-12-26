@@ -1,403 +1,74 @@
-  {% load static %}
-  <!doctype html>
-  <html class="no-js" lang="zxx">
+ {% load static %}
+<!doctype html>
+<html lang="en">
   <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>eCommerce HTML-5 Template </title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href=" {% static 'site.webmanifest' %} ">
-  <link rel="shortcut icon" type="image/x-icon" href=" {% static 'img/favicon.ico' %} ">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- CSS here -->
-  <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/owl.carousel.min.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/flaticon.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/slicknav.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/animate.min.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/magnific-popup.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/fontawesome-all.min.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/themify-icons.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/slick.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/nice-select.css' %} ">
-  <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Djnago Authentication</title>
   </head>
+  <body class="container">
 
-  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">{{ user.username }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+       {% if user.is_authenticated %}                                      
+       <li class="nav-item"><a class="nav-link" href=" {% url 'users-profile' %} ">My Account </a></li>   
+       <li class="nav-item"><a class="nav-link" href=" {% url 'users-logout' %}">Logout</a></li>
+       {% endif %}
+       <li class="nav-item"><a class="nav-link" href=" {% static 'product_list.html' %} ">Wish List  </a></li>
+       <li class="nav-item"><a class="nav-link" href="">Shopping</a></li>
+       <li class="nav-item"><a class="nav-link" href=" {% static 'checkout.html' %} ">Checkout</a></li>
 
 
-  <!-- Preloader Start -->
-  <div id="preloader-active">
-  <div class="preloader d-flex align-items-center justify-content-center">
-  <div class="preloader-inner position-relative">
-    <div class="preloader-circle"></div>
-    <div class="preloader-img pere-text">
-        <!-- <img src=" {% static 'img/logo/logo.png' %} " alt=""> -->
-    </div>
-  </div>
-  </div>
-  </div>
-  <!-- Preloader Start -->
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
 
-  <header>
-  <!-- Header Start -->
-  <div class="header-area">
-  <div class="main-header ">
-
-  <div class="header-top top-bg d-none d-lg-block">
-  <div class="container-fluid">
-  <div class="col-xl-12">
-  <div class="row d-flex justify-content-between align-items-center">
-  <div class="header-info-left d-flex">
-
-  <div class="flag">
-
-  <img class="rounded-circle account-img" style="height: 40px; width: 40px"
-   src="{{ user.profile.file.url }}" alt="">
-  </div>
-  <ul class="font-weight-bold text-light" style="padding-top: 12px; padding-left: 10px; text-transform: capitalize"> 
-  <li class="">{{ user.username }}</li>
-  </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 
   </div>
+</nav>
 
-  <div class="header-info-right">
-  <ul>
-   {% if user.is_authenticated %}                                      
-   <li><a href=" {% url 'users-profile' %} ">My Account </a></li>   
-   <li><a href=" {% url 'users-logout' %}">Logout</a></li>
-   {% endif %}
-   <li><a href=" {% static 'product_list.html' %} ">Wish List  </a></li>
-   <li><a href="">Shopping</a></li>
-   <li><a href=" {% static 'checkout.html' %} ">Checkout</a></li>
-   
-  </ul>
+  <div class="container text-left">
+    {% if user.is_authenticated %}                                      
+     <div class="nav-item"><a class="btn btn-danger mt-2 btn-block" href=" {% url 'users-profile' %} ">My Account </a></div>   
+     <div class="nav-item"><a class="btn btn-danger mt-2 btn-block" href=" {% url 'users-logout' %}">Logout</a></div>
+     {% endif %}
   </div>
 
-  </div>
-  </div>
-  </div>
-  </div>
-
-  <div class="header-bottom  header-sticky">
-  <div class="container-fluid">
-  <div class="row align-items-center">
-  <!-- Logo -->
-  <div class="col-xl-1 col-lg-1 col-md-1 col-sm-3">
-  <div class="logo">
-  <a class="h1 font-weight-bold text-danger"  href=" {% static 'index.html' %} ">
-    <!-- <img src=" {% static 'img/logo/logo.png' %} " alt=""> -->Estore*</a>
-  </div>
-  </div>
-  <div class="col-xl-6 col-lg-8 col-md-7 col-sm-5">
-  <!-- Main-menu -->
-  <div class="main-menu f-right d-none d-lg-block">
-  <nav>                                                
-  <ul id="navigation">                                                                                                                                     
-  <li><a href=" {% url 'blog:blog-home' %} ">Home</a></li>
-  <!--   <li><a href=" {% static 'Catagori.html' %} ">Catagori</a></li> -->
-
-  <li class="hot"><a href="#">Latest</a>
-      <ul class="submenu">
-          <li><a href=" {% static 'product_list.html' %} "> Product list</a></li>
-          <li><a href=" {% static 'single-product.html' %} "> Product Details</a></li>
-      </ul>
-  </li>
-
-  <li>
-      <a href=" {% static 'blog.html' %} ">Blog</a>
-      <ul class="submenu">
-          <li><a href=" {% static 'blog.html' %} ">Blog</a></li>
-          <li><a href=" {% static 'single-blog.html' %} ">Blog Details</a></li>
-      </ul>
-  </li>
-
-  <li><a href="#">Pages</a>
-      <ul class="submenu">
-          <li><a href=" {% static 'login.html' %} ">Login</a></li>
-          <li><a href=" {% static 'cart.html' %} ">Card</a></li>
-          <li><a href=" {% static 'elements.html' %} ">Element</a></li>
-          <li><a href=" {% static 'about.html' %} ">About</a></li>
-          <li><a href=" {% static 'confirmation.html' %} ">Confirmation</a></li>
-          <li><a href=" {% static 'cart.html' %} ">Shopping Cart</a></li>
-          <li><a href=" {% static 'checkout.html' %} ">Product Checkout</a></li>
-      </ul>
-  </li>
-  <li><a href=" {% static 'contact.html' %} ">Contact</a></li>
-  </ul>
-  </nav>
-  </div>
+  <div class="container text-center" style="margin-top: 5rem">
+  <img class="rounded-circle account-img" style="height: 250px; width: 250px"
+   src="{{ user.profile.file.url }}" alt="">  
   </div>
 
-
-
-  <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 fix-card">
-  <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
-  <li class="d-none d-xl-block">
-      <div class="form-box f-right ">
-          <input type="text" name="Search" placeholder="Search products">
-          <div class="search-icon">
-              <i class="fas fa-search special-tag"></i>
-          </div>
-      </div>
-   </li>
-  <li class=" d-none d-xl-block">
-      <div class="favorit-items">
-          <i class="far fa-heart"></i>
-      </div>
-  </li>
-  <li>
-      <div class="shopping-card">
-          <a href=" {% static 'cart.html' %} "><i class="fas fa-shopping-cart"></i></a>
-      </div>
-  </li>
-  <li class="d-none d-lg-block"> <a href="{% url 'users-login' %}" class="btn header-btn">Sign in</a></li>
-  </ul>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="col-12">
-  <div class="mobile_menu d-block d-lg-none"></div>
-  </div>
-
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-
-  <!-- Header End -->
-  </header>
-
-
-
-  <!-- slider Area Start -->
-  <div class="slider-area ">
-  <!-- Mobile Menu -->
-  <div class="slider-active">
-  <div class="single-slider slider-height" data-background="{% static 'img/hero/h1_hero.jpg' %}">
-  <div class="container">
-
-
-  <div class="sidenav">
-  <li><a href=" {% static 'product_list.html' %} ">Electronic Device</a></li>
-  <li><a href=" {% static 'cart.html' %} ">Electronic Accessories</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Electronic Device</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'cart.html' %} ">Electronic Accessories</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'checkout.html' %} ">TV & Home Appliances</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Home & Lifestyle</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'cart.html' %} ">Health & Beauty</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'checkout.html' %} ">Babies & Toys</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Groceries & Pets</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'cart.html' %} ">Home & Lifestyle</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'checkout.html' %} ">Women's Fashion</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Electronic Device</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'cart.html' %} ">Men's Fashion</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'checkout.html' %} ">Sports & Outdoors</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Watches & Accessories</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'cart.html' %} ">Health & Beauty</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'checkout.html' %} ">Babies & Toys</a></li>
-  <li nav-item ><a class="nav-link" href=" {% static 'product_list.html' %} ">Automotive & Motorbike</a></li>
-
-
-  <a class="dropdown-btn">Dropdown
-  <i class="fa fa-caret-down"></i>
-  </a>
-  <div class="dropdown-container">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  </div>  
-
-  </div>
-
-
-
-  <div class="main">
-  <div class="row d-flex align-items-center justify-content-between">
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-none d-md-block">
-  <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-  <img src=" {% static 'img/hero/hero_man.png' %} " alt="">
-  </div>
-  </div>
-  <div class="col-xl-5 col-lg-5 col-md-5 col-sm-8">
-  <div class="hero__caption">
-  <span data-animation="fadeInRight" data-delay=".4s">60% Discount</span>
-  <h1 data-animation="fadeInRight" data-delay=".6s">Winter <br> Collection</h1>
-  <p data-animation="fadeInRight" data-delay=".8s">Best Cloth Collection By 2020!</p>
-  <!-- Hero-btn -->
-  <div class="hero__btn" data-animation="fadeInRight" data-delay="1s">
-     <a href="" class="btn hero-btn">Shop Now</a>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-
-
-  </div>
-  </div>
-
-  </div>
-  </div>
-  <!-- slider Area End-->
+  
 
   {% block content %}
 
   {% endblock %}
 
-<style>
-
-  /*Header Css Start*/
-
-  .header-area .header-top .header-info-right ul li {
-    display: inline-block;
-  }
-
-  .header-area .header-top .header-info-right ul li a {
-    padding-left: 20px;
-    font-size: 13px;
-    text-transform: capitalize;
-    color: #ffffff;
-  }
 
 
+  
 
-  /*End Header Css*/
-
-
-  .sidenav {
-    height: 100%;
-    width:auto;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 1.5rem;
-    background-color: #2577fd;
-    overflow-x: hidden;
-    padding-top: 2rem;
-    opacity: 
-  }
-
-  .sidenav a {
-    padding: 6px 16px 0px 16px;
-    text-decoration: none;
-    font-size: 14px;
-    color: #ffffff;
-    display: block;
-  }
-
-  .sidenav a:hover {
-    color: black;
-  }
-
-  .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-  }
-
- @media only screen and (max-width: 479px) {
-    .sidenav {
-      display: none;
-    }
-
-}
-
-
-
-  /* Style the sidenav links and the dropdown button */
-  .dropdown-btn {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 14px;
-    color: #ffffff;
-    display: block;
-    display: block;
-    border: none;
-    background: none;
-    width:100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-  }
-
-  /* On mouse-over */
-  .dropdown-btn:hover {
-    color: black;
-  }
-
-
-  /* Add an active class to the active dropdown button */
-  .active {
-    /*background-color: green;*/
-    color: white;
-  }
-   
-
-  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-  .dropdown-container {
-    display: none;
-    background-color: #262626;
-    padding-left: 8px;
-  }
-
-  /* Optional: Style the caret down icon */
-  .fa-caret-down {
-    float: right;
-    padding-left: auto;
-  }
-
-</style>
-
-
-  <!-- JS here -->
-
-  <script type="text/javascript">
-
-  //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-  var dropdown = document.getElementsByClassName("dropdown-btn");
-  var i;
-
-  for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-  } 
-  </script>
-
-  <!-- All JS Custom Plugins Link Here here -->
-  <!-- Jquery, Popper, Bootstrap -->
-  <script src=" {% static './js/vendor/jquery-1.12.4.min.js' %} "></script>
-  <script src=" {% static './js/popper.min.js' %} "></script>
-  <script src=" {% static './js/bootstrap.min.js' %} "></script>
-  <!-- Jquery Mobile Menu -->
-  <script src=" {% static './js/jquery.slicknav.min.js' %} "></script>
-
-  <!-- Jquery Slick , Owl-Carousel Plugins -->
-  <script src=" {% static './js/owl.carousel.min.js' %} "></script>
-  <script src=" {% static './js/slick.min.js' %} "></script>
-
-  <!-- One Page, Animated-HeadLin -->
-  <script src=" {% static './js/wow.min.js' %} "></script>
-  <script src=" {% static './js/animated.headline.js' %} "></script>
-  <script src=" {% static './js/jquery.magnific-popup.js' %} "></script>
-
-  <!-- Scrollup, nice-select, sticky -->
-  <script src=" {% static './js/jquery.scrollUp.min.js' %} "></script>
-  <script src=" {% static './js/jquery.nice-select.min.js' %} "></script>
-  <script src=" {% static './js/jquery.sticky.js' %} "></script>
-
-  <!-- contact js -->
-  <!-- Jquery Plugins, main Jquery -->  
-  <script src=" {% static './js/main.js' %} "></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
-  </html>
+</html>
