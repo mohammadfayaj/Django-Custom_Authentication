@@ -15,18 +15,16 @@
 ![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/mohammadfayaj-patch-1/Screenshot%20(13).png)
 ![Optional Text](https://github.com/mohammadfayaj/Django-authentication/blob/mohammadfayaj-patch-1/Screenshot%20(15).png)
 
-# Install
+Install
 
-1. Just clone:- https://github.com/mohammadfayaj/Django-authentication.git
+  Just clone:- https://github.com/mohammadfayaj/Django-authentication.git
 
-2. Create virtualenv , activate virtualenv [ (your virtulenv dir name)/scripts/activate ]
+  Create virtualenv , activate virtualenv [ (your virtulenv dir name)/scripts/activate ]
 
-3. cd /projects
+  pip install -r requirements.txt
 
-4. **pip install -r requirements.txt**
+  python manage.py runserver
 
-5. python manage.py runserver
+  http://127.0.0.1:8000/
 
-6. http://127.0.0.1:8000/
-
-7. Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
+  Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
