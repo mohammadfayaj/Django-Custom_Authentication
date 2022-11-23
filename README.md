@@ -27,5 +27,5 @@ How To Install ?
 
   http://127.0.0.1:8000/
 
-  Default Admin Password:- username = "**darkwhisper**", pass = "**2536**"
+
 ```
